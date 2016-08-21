@@ -1,0 +1,46 @@
+{
+  "name": "alfred-link",
+  "version": "0.0.0",
+  "description": "Make your Alfred workflows installable from npm",
+  "license": "MIT",
+  "repository": "SamVerschueren/alfred-link",
+  "author": {
+    "name": "Sam Verschueren",
+    "email": "sam.verschueren@gmail.com",
+    "url": "github.com/SamVerschueren"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "alfred",
+    "link",
+    "symlink",
+    "packal"
+  ],
+  "dependencies": {
+    "del": "^2.2.2",
+    "path-exists": "^3.0.0",
+    "pify": "^2.3.0",
+    "pkg-up": "^1.0.0",
+    "plist": "^2.0.1",
+    "user-home": "^2.0.0"
+  },
+  "devDependencies": {
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true
+  }
+}
