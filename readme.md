@@ -29,8 +29,22 @@ You can now install the `alfred-unicorn` package like this
 $ npm install -g alfred-unicorn.
 ```
 
-This will update `info.plist` with the information from `package.json` and creates a `unicorn` symlink inside the Alfred
-workflows directory that points to the location of the `alfred-unicorn` module.
+This will update `info.plist` with the information from `package.json` and creates a `unicorn` symlink inside the Alfred workflows directory that points to the location of the `alfred-unicorn` module.
+
+
+## info.plist
+
+This package will update the `info.plist` file when the workflow is being installed. The following properties in `info.plist` can be safely omitted. The corresponding values in `package.json` are added to the plist file.
+
+| info.plist  | package.json |
+|-------------|--------------|
+| name        | name         |
+| version     | version      |
+| description | description  |
+| createdby   | author.name  |
+| webaddress  | author.url   |
+
+> Note: If the workflow is prefixed by `alfred-`, that prefix is being removed in the name of `info.plist`. For example, `alfred-unicorn` becomes `unicorn`.
 
 
 ## Related
