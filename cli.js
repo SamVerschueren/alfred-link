@@ -2,4 +2,7 @@
 'use strict';
 const alfyLink = require('./');
 
-alfyLink();
+alfyLink().catch(err => {
+	console.error(err);
+	process.exit(1);
+});
