@@ -2,10 +2,12 @@
 'use strict';
 const alfyLink = require('./');
 
-// Check if installed with the `--global` flag
-if (process.env.npm_config_global === 'true') {
-	alfyLink().catch(err => {
-		console.error(err);
-		process.exit(1);
-	});
+if (process.env.npm_config_global === '') {
+	// Prevent linking if the script was part of a non-global npm (install) command
+	process.exit(0);
 }
+
+alfyLink().catch(err => {
+	console.error(err);
+	process.exit(1);
+});
