@@ -41,8 +41,8 @@ This package will update the `info.plist` file when the workflow is being instal
 | name        | name         |
 | version     | version      |
 | description | description  |
+| webaddress  | homepage     |
 | createdby   | author.name  |
-| webaddress  | author.url   |
 
 > Note: If the workflow is prefixed by `alfred-`, that prefix is being removed in the name of `info.plist`. For example, `alfred-unicorn` becomes `unicorn`.
 

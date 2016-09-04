@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const pathExists = require('path-exists');
-const pkgUp = require('pkg-up');
+const readPkgUp = require('read-pkg-up');
 const pify = require('pify');
 const del = require('del');
 const resolveAlfredPrefs = require('resolve-alfred-prefs');
@@ -26,10 +26,11 @@ module.exports = () => {
 				throw new Error(`Workflow directory \`${workflowDir}\` does not exist`);
 			}
 
-			return pkgUp(cwd);
+			return readPkgUp(cwd);
 		})
-		.then(filePath => {
-			const pkg = require(filePath);
+		.then(result => {
+			const pkg = result.pkg;
+			const filePath = result.path;
 
 			const src = path.dirname(filePath);
 			const dest = path.join(workflowDir, pkg.name);
