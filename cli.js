@@ -2,12 +2,15 @@
 'use strict';
 const alfyLink = require('./');
 
-if (process.env.npm_config_global === '') {
+const npmGlobal = process.env.npm_config_global;
+
+if (npmGlobal === '') {
 	// Prevent linking if the script was part of a non-global npm (install) command
 	process.exit(0);
 }
 
-alfyLink().catch(err => {
+// Only transform if `alfred-link` is called from `npm -g`
+alfyLink({transform: npmGlobal}).catch(err => {
 	console.error(err);
 	process.exit(1);
 });

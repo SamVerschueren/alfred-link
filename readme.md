@@ -38,13 +38,19 @@ This package will update the `info.plist` file when the workflow is being instal
 
 | info.plist  | package.json |
 |-------------|--------------|
-| name        | name         |
 | version     | version      |
 | description | description  |
 | webaddress  | homepage     |
 | createdby   | author.name  |
 
-> Note: If the workflow is prefixed by `alfred-`, that prefix is being removed in the name of `info.plist`. For example, `alfred-unicorn` becomes `unicorn`.
+
+## Development
+
+When developing an Alfred workflow, you can call `alfred-link` directly from your cli. Either by installing `alfred-link` globally or by calling `alfred-link` from your `node_modules/.bin` directory. This will create a symlink in the Alfred workflows directory pointing to your development location without transforming `info.plist`.
+
+```
+$ ./node_modules/.bin/alfred-link
+```
 
 
 ## Related

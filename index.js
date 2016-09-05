@@ -1,16 +1,16 @@
 'use strict';
 const path = require('path');
-const fs = require('fs');
 const pathExists = require('path-exists');
 const readPkgUp = require('read-pkg-up');
-const pify = require('pify');
-const del = require('del');
 const resolveAlfredPrefs = require('resolve-alfred-prefs');
 const plistTransform = require('./lib/plist-transform');
+const link = require('./lib/link');
 
-const fsP = pify(fs);
+module.exports = opts => {
+	const options = Object.assign({
+		transform: true
+	}, opts);
 
-module.exports = () => {
 	const cwd = process.cwd();
 
 	let workflowDir;
@@ -35,8 +35,11 @@ module.exports = () => {
 			const src = path.dirname(filePath);
 			const dest = path.join(workflowDir, pkg.name);
 
+			if (!options.transform) {
+				return link(src, dest);
+			}
+
 			return plistTransform(path.dirname(filePath), pkg)
-				.then(() => del(dest, {force: true}))
-				.then(() => fsP.symlink(src, dest));
+				.then(() => link(src, dest));
 		});
 };
