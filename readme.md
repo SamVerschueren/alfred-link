@@ -1,6 +1,6 @@
 # alfred-link [![Build Status](https://travis-ci.org/SamVerschueren/alfred-link.svg?branch=master)](https://travis-ci.org/SamVerschueren/alfred-link)
 
-> Make your [Alfred](https://www.alfredapp.com/) workflows installable from npm
+> Make your [Alfred](http://alfredapp.com) workflows installable from npm
 
 
 ## Install
@@ -36,12 +36,20 @@ This will update `info.plist` with the information from `package.json` and creat
 
 This package will update the `info.plist` file when the workflow is being installed. The following properties in `info.plist` can be safely omitted. The corresponding values in `package.json` are added to the plist file.
 
-| info.plist  | package.json |
-|-------------|--------------|
-| version     | version      |
-| description | description  |
-| webaddress  | homepage     |
-| createdby   | author.name  |
+| info.plist  | package.json                                | example `"name": "alfred-package-name"`                      |
+|-------------|---------------------------------------------|--------------------------------------------------------------|
+| version     | version                                     |                                                              |
+| description | description                                 |                                                              |
+| webaddress  | homepage                                    |                                                              |
+| createdby   | author.name                                 |                                                              |
+| name        | `name` (to [title case]) or `config.name`   | Package Name                                                 |
+| bundleid    | `name` (to [dot case]) or `config.bundleid` | com.authorname.packagename                                   |
+| category    | config.category                             |                                                              |
+| variables   | config.variables                            | `{ "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" }` |
+| readme      | config.readme                               | Import from README if `true`                                 |
+
+[title case]: https://github.com/blakeembrey/change-case#titlecase
+[dot case]:   https://github.com/blakeembrey/change-case#dotcase
 
 
 ## Development
