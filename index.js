@@ -3,8 +3,12 @@ const path = require('path');
 const pathExists = require('path-exists');
 const readPkgUp = require('read-pkg-up');
 const resolveAlfredPrefs = require('resolve-alfred-prefs');
+const sudoBlock = require('sudo-block');
 const plistTransform = require('./lib/plist-transform');
 const link = require('./lib/link');
+
+// Prevent running as `sudo`
+sudoBlock();
 
 module.exports = opts => {
 	const options = Object.assign({
