@@ -12,13 +12,14 @@ $ npm install --save alfred-link
 
 ## Usage
 
-Add the `alfred-link` command as `postinstall` script of your Alfred package.
+Add the `alfred-link` command as `postinstall` script of your Alfred package and add `alfred-unlink` as `preuninstall` script to clean up the resources when the workflow gets uninstalled.
 
 ```json
 {
   "name": "alfred-unicorn",
   "scripts": {
-    "postinstall": "alfred-link"
+    "postinstall": "alfred-link",
+    "preuninstall": "alfred-unlink"
   }
 }
 ```
@@ -50,6 +51,12 @@ When developing an Alfred workflow, you can call `alfred-link` directly from you
 
 ```
 $ ./node_modules/.bin/alfred-link
+```
+
+To remove the symlink afterwards, you can call `alfred-unlink`.
+
+```
+$ ./node_modules/.bin/alfred-unlink
 ```
 
 

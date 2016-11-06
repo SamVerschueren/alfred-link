@@ -16,7 +16,10 @@
       "url": "sindresorhus.com"
     }
   ],
-  "bin": "cli.js",
+  "bin": {
+    "alfred-link": "link.js",
+    "alfred-unlink": "unlink.js"
+  },
   "engines": {
     "node": ">=4"
   },
@@ -25,8 +28,9 @@
   },
   "files": [
     "index.js",
-    "lib",
-    "cli.js"
+    "link.js",
+    "unlink.js",
+    "lib"
   ],
   "keywords": [
     "cli-app",
