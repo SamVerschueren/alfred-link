@@ -6,31 +6,34 @@ const resolveAlfredPrefs = require('resolve-alfred-prefs');
 const sudoBlock = require('sudo-block');
 const plistTransform = require('./lib/plist-transform');
 const link = require('./lib/link');
+const unlink = require('./lib/unlink');
 
 // Prevent running as `sudo`
 sudoBlock();
 
-module.exports = opts => {
+const getWorkflowDir = () => resolveAlfredPrefs().then(prefs => path.join(prefs, 'workflows'));
+
+const readPkg = workflowDir => pathExists(workflowDir)
+	.then(exists => {
+		if (!exists) {
+			throw new Error(`Workflow directory \`${workflowDir}\` does not exist`);
+		}
+
+		return readPkgUp();
+	});
+
+exports.link = opts => {
 	const options = Object.assign({
 		transform: true
 	}, opts);
 
-	const cwd = process.cwd();
-
 	let workflowDir;
 
-	return resolveAlfredPrefs()
-		.then(prefs => {
-			workflowDir = path.join(prefs, 'workflows');
+	return getWorkflowDir()
+		.then(dir => {
+			workflowDir = dir;
 
-			return pathExists(workflowDir);
-		})
-		.then(exists => {
-			if (!exists) {
-				throw new Error(`Workflow directory \`${workflowDir}\` does not exist`);
-			}
-
-			return readPkgUp(cwd);
+			return readPkg(dir);
 		})
 		.then(result => {
 			const pkg = result.pkg;
@@ -47,3 +50,8 @@ module.exports = opts => {
 				.then(() => link(src, dest));
 		});
 };
+
+exports.unlink = () => getWorkflowDir()
+	.then(dir => readPkg(dir)
+		.then(res => unlink(dir, res.pkg))
+	);

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-const alfyLink = require('./');
+const alfredLink = require('./');
 
 const npmGlobal = process.env.npm_config_global;
 
@@ -10,7 +10,7 @@ if (npmGlobal === '') {
 }
 
 // Only transform if `alfred-link` is called from `npm -g`
-alfyLink({transform: npmGlobal}).catch(err => {
+alfredLink.link({transform: npmGlobal}).catch(err => {
 	console.error(err);
 	process.exit(1);
 });
