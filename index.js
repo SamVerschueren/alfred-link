@@ -53,5 +53,5 @@ exports.link = opts => {
 
 exports.unlink = () => getWorkflowDir()
 	.then(dir => readPkg(dir)
-		.then(res => unlink(dir, res.pkg))
+		.then(res => unlink(path.join(dir, res.pkg.name)))
 	);
