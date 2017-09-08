@@ -40,7 +40,7 @@ exports.link = opts => {
 			const filePath = result.path;
 
 			const src = path.dirname(filePath);
-			const dest = path.join(workflowDir, pkg.name);
+			const dest = path.join(workflowDir, pkg.name.replace('/', '-'));
 
 			if (!options.transform) {
 				return link(src, dest);
@@ -53,5 +53,5 @@ exports.link = opts => {
 
 exports.unlink = () => getWorkflowDir()
 	.then(dir => readPkg(dir)
-		.then(res => unlink(path.join(dir, res.pkg.name)))
+		.then(res => unlink(path.join(dir, res.pkg.name.replace('/', '-'))))
 	);
