@@ -14,6 +14,11 @@
       "name": "Sindre Sorhus",
       "email": "sindresorhus@gmail.com",
       "url": "sindresorhus.com"
+    },
+    {
+      "name": "Daniel Bayley",
+      "email": "daniel.bayley@me.com",
+      "url": "github.com/danielbayley"
     }
   ],
   "bin": {
@@ -41,6 +46,7 @@
     "packal"
   ],
   "dependencies": {
+    "change-case": "^3.0.0",
     "del": "^2.2.2",
     "path-exists": "^3.0.0",
     "pify": "^2.3.0",
