@@ -47,7 +47,7 @@ This package will update the `info.plist` file when the workflow is being instal
 
 ## Development
 
-When developing an Alfred workflow, you can call `alfred-link` directly from your cli. Either by installing `alfred-link` globally or by using the [postinstall script](#Usage) to implicitly call the local installation. This will create a symlink in the Alfred workflows directory pointing to your development location without transforming `info.plist`.
+When developing an Alfred workflow, you can call `alfred-link` directly from your cli. Either by installing `alfred-link` globally or by using the [postinstall script](#usage) to implicitly call the local installation. This will create a symlink in the Alfred workflows directory pointing to your development location without transforming `info.plist`.
 
 ```
 $ npm run postinstall # or `alfred-link` if global
