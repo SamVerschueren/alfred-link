@@ -17,7 +17,7 @@ Add the `alfred-link` command as `postinstall` script of your Alfred package and
 ```json
 {
   "name": "alfred-unicorn",
-  "scripts": {
+  "scripts": { 
     "postinstall": "alfred-link",
     "preuninstall": "alfred-unlink"
   }
@@ -47,16 +47,16 @@ This package will update the `info.plist` file when the workflow is being instal
 
 ## Development
 
-When developing an Alfred workflow, you can call `alfred-link` directly from your cli. Either by installing `alfred-link` globally or by using the [postinstall script](#usage) to implicitly call the local installation. This will create a symlink in the Alfred workflows directory pointing to your development location without transforming `info.plist`.
+When developing an Alfred workflow, you can call `alfred-link` directly from your cli. Either by installing `alfred-link` globally or by using `npx` to call the local installation. This will create a symlink in the Alfred workflows directory pointing to your development location without transforming `info.plist`.
 
 ```
-$ npm run postinstall # or `alfred-link` if global
+$ npx alfred-link  # or just `alfred-link` if global
 ```
 
 To remove the symlink afterwards, you can call `alfred-unlink`.
 
 ```
-$ npm run preuninstall # or `alfred-unlink` if global
+$ npx alfred-unlink  # or just `alfred-unlink` if global
 ```
 
 
