@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const makeDir = require('make-dir');
 const pathExists = require('path-exists');
 const readPkgUp = require('read-pkg-up');
 const resolveAlfredPrefs = require('resolve-alfred-prefs');
@@ -14,13 +15,22 @@ sudoBlock();
 const getWorkflowDir = () => resolveAlfredPrefs().then(prefs => path.join(prefs, 'workflows'));
 
 const readPkg = workflowDir => pathExists(workflowDir)
-	.then(exists => {
-		if (!exists) {
-			throw new Error(`Workflow directory \`${workflowDir}\` does not exist`);
+	.then(workflowDirExists => {
+		if (workflowDirExists) {
+			return;
 		}
 
-		return readPkgUp();
-	});
+		return resolveAlfredPrefs()
+			.then(prefs => pathExists(prefs))
+			.then(prefsExists => {
+				if (!prefsExists) {
+					throw new Error('`Alfred.alfredpreferences` package does not exist');
+				}
+
+				return makeDir(workflowDir);
+			});
+	})
+	.then(() => readPkgUp());
 
 exports.link = opts => {
 	const options = Object.assign({
