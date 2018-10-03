@@ -36,7 +36,7 @@ exports.link = opts => {
 			return readPkg(dir);
 		})
 		.then(result => {
-			const pkg = result.pkg;
+			const {pkg} = result;
 			const filePath = result.path;
 
 			const src = path.dirname(filePath);
