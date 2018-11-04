@@ -53,5 +53,5 @@
 	},
 	"devDependencies": {
 		"xo": "^0.23.0"
-  }
+	}
 }
