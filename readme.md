@@ -47,16 +47,18 @@ This package will update the `info.plist` file when the workflow is being instal
 
 ## Development
 
-When developing an Alfred workflow, you can call `alfred-link` directly from your cli. Either by installing `alfred-link` globally or by using `npx` to call the local installation. This will create a symlink in the Alfred workflows directory pointing to your development location without transforming `info.plist`.
+When developing an Alfred workflow, you can call `alfred-link` directly from your cli. Use `npx` to call the local installation of `alfred-link` and `alfred-unlink`.
 
 ```
-$ npx alfred-link  # or just `alfred-link` if global
+$ npx alfred-link
 ```
+
+This will create a symlink in the Alfred workflows directory pointing to your development location without transforming `info.plist`.
 
 To remove the symlink afterwards, you can call `alfred-unlink`.
 
 ```
-$ npx alfred-unlink  # or just `alfred-unlink` if global
+$ npx alfred-unlink
 ```
 
 
