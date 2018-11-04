@@ -42,6 +42,7 @@
 	],
 	"dependencies": {
 		"del": "^2.2.2",
+		"make-dir": "^1.3.0",
 		"path-exists": "^3.0.0",
 		"pify": "^2.3.0",
 		"plist": "^2.0.1",
