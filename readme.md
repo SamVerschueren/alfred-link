@@ -69,6 +69,7 @@ To remove the symlink afterwards, you can call `alfred-unlink`.
 $ npx alfred-unlink
 ```
 
+
 ## Related
 
 - [alfy](https://github.com/sindresorhus/alfy) - Create Alfred workflows with ease
