@@ -10,6 +10,14 @@ $ npm install --save alfred-link
 ```
 
 
+## Supporting Versions
+
+- Alfred 3
+- Alfred 4
+
+This package will only affect the latest one if you have multiple versions in your system.
+
+
 ## Usage
 
 Add the `alfred-link` command as `postinstall` script of your Alfred package and add `alfred-unlink` as `preuninstall` script to clean up the resources when the workflow gets uninstalled.
@@ -17,7 +25,7 @@ Add the `alfred-link` command as `postinstall` script of your Alfred package and
 ```json
 {
   "name": "alfred-unicorn",
-  "scripts": { 
+  "scripts": {
     "postinstall": "alfred-link",
     "preuninstall": "alfred-unlink"
   }
@@ -27,7 +35,7 @@ Add the `alfred-link` command as `postinstall` script of your Alfred package and
 You can now install the `alfred-unicorn` package like this
 
 ```
-$ npm install -g alfred-unicorn.
+$ npm install -g alfred-unicorn
 ```
 
 This will update `info.plist` with the information from `package.json` and creates a `unicorn` symlink inside the Alfred workflows directory that points to the location of the `alfred-unicorn` module.

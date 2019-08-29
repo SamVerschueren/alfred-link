@@ -12,7 +12,7 @@ const unlink = require('./lib/unlink');
 // Prevent running as `sudo`
 sudoBlock();
 
-const getWorkflowDir = () => resolveAlfredPrefs().then(prefs => path.join(prefs, 'workflows'));
+const getWorkflowDir = () => resolveAlfredPrefs().then(prefs => path.join(prefs.path, 'workflows'));
 
 const readPkg = workflowDir => pathExists(workflowDir)
 	.then(workflowDirExists => {
@@ -21,7 +21,7 @@ const readPkg = workflowDir => pathExists(workflowDir)
 		}
 
 		return resolveAlfredPrefs()
-			.then(prefs => pathExists(prefs))
+			.then(prefs => pathExists(prefs.path))
 			.then(prefsExists => {
 				if (!prefsExists) {
 					throw new Error('`Alfred.alfredpreferences` package does not exist');
