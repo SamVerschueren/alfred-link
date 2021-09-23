@@ -45,7 +45,7 @@
 		"make-dir": "^1.3.0",
 		"path-exists": "^3.0.0",
 		"pify": "^2.3.0",
-		"plist": "^2.0.1",
+		"plist": "^3.0.4",
 		"read-pkg-up": "^1.0.1",
 		"resolve-alfred-prefs": "^2.0.0",
 		"sudo-block": "^1.2.0",
